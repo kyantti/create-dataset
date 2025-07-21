@@ -12,7 +12,5 @@ wheels/
 # npy
 *.npy
 
-# images
-*.png
-*.jpg
-*.jpeg
+# outputs
+outputs/*

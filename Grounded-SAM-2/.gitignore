@@ -143,6 +143,5 @@ dmypy.json
 # checkpoint
 *.pth
 outputs/
-!outputs/segm-masks-2023-july-17-28/C0/Fx10_20230717_Riego_C0_2023-07-17_09-02-21_annotated_with_mask.jpg
 
 .idea/
