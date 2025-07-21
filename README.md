@@ -18,29 +18,49 @@ The workflow consists of:
 
 ## Requirements
 
+
 - Python 3.10+
 - CUDA-enabled GPU recommended
-- [PyTorch](https://pytorch.org/)
-- [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO)
-- [SAM2](https://ai.meta.com/sam2)
-- [Supervision](https://github.com/roboflow/supervision)
-- [pycocotools](https://github.com/cocodataset/cocoapi)
-- [spectral](https://github.com/spectralpython/spectral)
-- [Pillow](https://python-pillow.org/)
+- All other requirements are installed as part of the Grounded-SAM-2 setup (see below).
 
-See `Grounded-SAM-2/README.md` for installation and model checkpoint details.
+
+## Grounded-SAM-2 Setup
+
+To use Grounded-SAM-2, follow the official installation steps from the [IDEA-Research/Grounded-SAM-2](https://github.com/IDEA-Research/Grounded-SAM-2) repository:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/IDEA-Research/Grounded-SAM-2.git
+   cd Grounded-SAM-2
+   ```
+2. **Download model checkpoints:**
+   ```bash
+   cd checkpoints
+   bash download_ckpts.sh
+   cd ../gdino_checkpoints
+   bash download_ckpts.sh
+   ```
+3. **Install dependencies:**
+   ```bash
+   uv pip install -e Grounded-SAM-2
+   uv pip install --no-build-isolation -e Grounded-SAM-2/grounding_dino
+   ```
+4. **(Optional) Docker setup:**
+   See the official repo for Docker instructions if you prefer containerized usage.
+
+Refer to `Grounded-SAM-2/README.md` for more details and troubleshooting.
 
 ## Usage
 
 1. **Run detection and segmentation:**
    ```bash
-   uv run python detect_and_segment_coco_annotations.py
+   uv run detect_and_segment_coco_annotations.py
    ```
    - Outputs COCO JSONs and annotated images in `outputs/segm-masks-.../C*/`
 
 2. **Create cropped hyperspectral cubes:**
    ```bash
-   uv run python create_cropped_cubes.py
+   uv run create_cropped_cubes.py
    ```
    - Outputs cropped cubes in `outputs/cropped-hypercubes/C*/`
 
