@@ -26,7 +26,7 @@ The workflow consists of:
 
 ## Grounded-SAM-2 Setup
 
-To use Grounded-SAM-2, follow the official installation steps from the [IDEA-Research/Grounded-SAM-2](https://github.com/IDEA-Research/Grounded-SAM-2) repository:
+To use [Grounded-SAM-2](https://github.com/IDEA-Research/Grounded-SAM-2), follow the official installation steps from the [IDEA-Research/Grounded-SAM-2](https://github.com/IDEA-Research/Grounded-SAM-2) repository:
 
 1. **Clone the repository:**
    ```bash
