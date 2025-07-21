@@ -44,6 +44,13 @@ See `Grounded-SAM-2/README.md` for installation and model checkpoint details.
    ```
    - Outputs cropped cubes in `outputs/cropped-hypercubes/C*/`
 
+
+## Example Detection & Segmentation
+
+Below is an example of fig detection and segmentation using Grounding DINO and SAM2:
+
+![Example Detection](outputs/segm-masks-2023-july-17-28/C0/Fx10_20230717_Riego_C0_2023-07-17_09-02-21_annotated_with_mask.jpg)
+
 ## Data Structure
 
 - `outputs/segm-masks-.../C*/`: COCO annotations and visualizations per class
