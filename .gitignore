@@ -8,3 +8,11 @@ wheels/
 
 # Virtual environments
 .venv
+
+# npy
+*.npy
+
+# images
+*.png
+*.jpg
+*.jpeg
