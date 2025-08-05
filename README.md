@@ -92,3 +92,7 @@ Pablo Setrakian Bearzotti, "Fig detection dataset using SAM2 and Grounding DINO"
 ## License
 
 See `Grounded-SAM-2/LICENSE` and individual model licenses for details.
+
+## Next steps
+
+See https://github.com/kyantti/select-best-bands
