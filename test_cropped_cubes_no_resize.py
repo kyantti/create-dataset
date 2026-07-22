@@ -8,7 +8,7 @@ def create_rgb_from_patch(patch, r=60, g=30, b=10):
         rgb = np.clip(rgb * 255, 0, 255).astype(np.uint8)
     return rgb
 
-def visualize_all_patches(patch_dir, output_dir='rgb_previews', r=60, g=30, b=10, new_size=None):
+def visualize_all_patches(patch_dir, output_dir='rgb_previews', r=60, g=30, b=10):
     os.makedirs(output_dir, exist_ok=True)
     patch_files = [f for f in os.listdir(patch_dir) if f.endswith('.npy')]
     print(f"🔎 Found {len(patch_files)} .npy files in {patch_dir}")
@@ -19,8 +19,6 @@ def visualize_all_patches(patch_dir, output_dir='rgb_previews', r=60, g=30, b=10
         try:
             rgb = create_rgb_from_patch(patch, r, g, b)
             img = Image.fromarray(rgb)
-            if new_size:
-                img = img.resize(new_size, Image.NEAREST)
             output_name = os.path.splitext(file)[0] + '_rgb.png'
             img.save(os.path.join(output_dir, output_name))
             print(f"✅ Saved: {output_name}")
@@ -30,9 +28,8 @@ def visualize_all_patches(patch_dir, output_dir='rgb_previews', r=60, g=30, b=10
             raise e
 
 def process_all_cropped_hypercubes(input_base_dir='outputs/cropped-hypercubes', 
-                                  output_base_dir='outputs/rgb-test', 
-                                  r=220, g=113, b=78,
-                                  new_size=None):
+                                  output_base_dir='outputs/rgb-test-no-resize', 
+                                  r=1, g=2, b=0):
     """Process all cropped hypercubes and create RGB test images"""
     # Create the base output directory
     os.makedirs(output_base_dir, exist_ok=True)
@@ -63,12 +60,12 @@ def process_all_cropped_hypercubes(input_base_dir='outputs/cropped-hypercubes',
         total_files_processed += len(patch_files)
         
         # Process this subdirectory
-        visualize_all_patches(input_dir, output_dir, r, g, b, new_size)
+        visualize_all_patches(input_dir, output_dir, r, g, b)
     
-    print(f"\n🎉 Processing complete!")
+    print("\n🎉 Processing complete!")
     print(f"📊 Total files processed: {total_files_processed}")
     print(f"📁 RGB test images saved to: {output_base_dir}")
 
 if __name__ == '__main__':
     print("🚀 Starting RGB preview generation for all cropped hypercubes...")
-    process_all_cropped_hypercubes(new_size=(512, 224))
+    process_all_cropped_hypercubes()
